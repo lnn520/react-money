@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 // @ts-ignore
 import Icon from './Icon.tsx';
 
@@ -12,20 +12,29 @@ box-shadow: 0 0 3px rgba(0,0,0,0.25);
 > ul{
 display: flex;
 >li{
+
+width: 33.3%;
+text-align: center;
 > a{
 display: flex;
 flex-direction: column;
 padding: 4px 0;
 align-items: center;
-}
-width: 33.3%;
-text-align: center;
-
-
 .icon{
 width: 24px;
 height: 24px;
 }
+&.selected{
+color: red;
+.icon{
+fill:red;
+}
+}
+}
+
+
+
+
 }
 }
 `
@@ -34,13 +43,16 @@ const Nav = ()=>{
         <NavWrapper>
             <ul>
                 <li>
-                    <Link to="/tags">    <Icon name="tag"/>标签页</Link>
+                    <NavLink to="/tags" activeClassName="selected">
+                        <Icon name="tag"/>标签页</NavLink>
                 </li>
                 <li>
-                    <Link to="/money">    <Icon name="money"/>记账页</Link>
+                    <NavLink to="/money" activeClassName="selected">
+                        <Icon name="money"/>记账页</NavLink>
                 </li>
                 <li>
-                    <Link to="/statistics"><Icon name="statistics"/>统计页</Link>
+                    <NavLink to="/statistics" activeClassName="selected">
+                        <Icon name="statistics"/>统计页</NavLink>
                 </li>
             </ul>
             </NavWrapper>
