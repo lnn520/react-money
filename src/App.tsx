@@ -2,6 +2,7 @@ import React from 'react';
 import {HashRouter as Router, Link, Redirect, Route, Switch} from 'react-router-dom';
 import styled  from 'styled-components';
 import Nav from './components/Nav';
+import Layout from './components/Layout';
 
 const Wrapper = styled.div`
 border: 1px solid red;
@@ -19,8 +20,6 @@ overflow: auto;
 function App() {
     return (
         <Router>
-        <Wrapper>
-            <Main>
             <Switch>
                 <Route path="/tags">
                     <Tags/>
@@ -36,9 +35,8 @@ function App() {
                     <NoMatch/>
                 </Route>
             </Switch>
-            </Main>
-            <Nav/>
-        </Wrapper>
+
+
     </Router>);
 }
 function NoMatch(){
@@ -47,15 +45,29 @@ function NoMatch(){
 }
 
 function Statistics() {
-    return <h2>Statistics</h2>;
+    return(
+        <Layout>
+            <h2>Statistics</h2>
+        </Layout>
+
+
+    )
 }
 
 function Tags() {
-    return <h2>Tags</h2>;
+    return(
+        <Layout>
+            <h2>Tags</h2>
+        </Layout>
+    )
 }
 
 function Money() {
-    return <h2>Money</h2>;
+    return(
+       <Layout>
+           <h2>Money</h2>
+       </Layout>
+    )
 }
 
 
