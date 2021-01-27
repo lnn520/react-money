@@ -38,7 +38,6 @@ const onBlur = ()=>{
                        ref={refInput}
                        defaultValue={note}
                        onBlur={onBlur}
-
                 />
             </label>
         </Wrapper>

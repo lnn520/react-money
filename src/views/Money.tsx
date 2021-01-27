@@ -15,12 +15,9 @@ function Money() {
         <MyLayout className="xxx">
             <TagsSection/>
             <NoteSection/>
-            <CategorySelection>
-                <ul>
-                    <li className="selected">支出</li>
-                    <li>收入</li>
-                </ul>
-            </CategorySelection>
+            <CategorySelection/>
+
+
             <NumberPadSection>
                 <div className="output">
                     100
