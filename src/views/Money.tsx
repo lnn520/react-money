@@ -3,8 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import TagsSection from './Money/TagsSection';
 import CategorySelection from './Money/CategorySelection';
-import NoteSection from './Money/NoteSection';
 import NumberPadSection from './Money/NumberPadSection';
+import NoteSection from './Money/NoteSection';
 
 const MyLayout = styled(Layout)`
 display: flex;
