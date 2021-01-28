@@ -18,6 +18,13 @@ function Money() {
         category:'-'  as Category,
         amount:0
     })
+    type Selected = typeof selected;
+    const onChange=(obj:Partial<Selected>)=>{//把部分值传入
+        setSelected({
+            ...selected,
+            ...obj
+        })
+    }
     return(
         <MyLayout className="xxx">
             {selected.tags.join('.')}
@@ -25,37 +32,20 @@ function Money() {
             {selected.note}
             <hr/>
             {selected.category}
+            <hr/>
+            {selected.amount}
             <TagsSection value = {selected.tags}
-                         onChange={async (tags) => setSelected({
-                             ...selected,
-                             tags: tags
-                         })}/>
-            <NoteSection value={selected.note}
-                         onChange={(note)=>{
-                             setSelected({
-                                 ...selected,
-                                 note:note
-                             })
-                         }}
-            />
-            <CategorySelection value={selected.category}
-                               onChange={(category)=>{
-                                   setSelected({
-                                       ...selected,
-                                       category: category
-                                   })
-                               }}
+                         onChange={ (tags)=>onChange({tags})}/>
 
-            />
+            <NoteSection value={selected.note}
+                         onChange={(note)=>onChange({note})}/>
+
+            <CategorySelection value={selected.category}
+                               onChange={(category)=>onChange({category})}/>
+
             <NumberPadSection value={selected.amount}
-                              onChange={(amount)=>{
-                                  setSelected({
-                                      ...selected,
-                                      amount: amount
-                                  })
-                              }}
-                              onOk={()=>{}}
-            />
+                              onChange={(amount)=>onChange({amount})}
+                              onOk={()=>{}}/>
         </MyLayout>
     )
 }

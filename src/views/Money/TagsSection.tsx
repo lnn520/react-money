@@ -34,7 +34,7 @@ margin-top: 8px;
 `;
 type Props = {
     value: string[];
-    onChange: (selected:string[])=>{};
+    onChange: (selected:string[])=>void;
 }
 const TagsSection: React.FC<Props> = (props)=>{
     const [tags,setTags] = useState<string[]>(['衣','食','住','行']);
