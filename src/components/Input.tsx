@@ -29,4 +29,5 @@ const Input: React.FC<Props> = (props)=>{
         </Lable>
     )
 };
+// @ts-ignore
 export {Input};
