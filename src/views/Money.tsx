@@ -41,7 +41,6 @@ function Money() {
 
     return(
         <MyLayout className="xxx">
-            {JSON.stringify(selected)}
 
             <TagsSection value = {selected.tagIds}
                          onChange={ (tagIds)=>onChange({tagIds})}/>

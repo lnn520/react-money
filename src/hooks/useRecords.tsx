@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {useUpdate} from './useUpdate';
 // type newRecordItem =Omit<RecordItem,'createdAt'>忽略RecordItem中的createdAt
-type RecordItem ={
+ type RecordItem ={
    tagIds: number[];
    note:string;
    category:'+'|'-';
