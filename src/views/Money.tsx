@@ -30,9 +30,11 @@ function Money() {
     const {records,addRecords} =useRecords()
     console.log(records)
     const submit = ()=>{
-        addRecords(selected)
-        alert('保存了')
-        setSelected(defaultFormDate);
+        if(addRecords(selected)){
+            alert('保存了')
+            setSelected(defaultFormDate);
+        }
+
     }
 
     return(
