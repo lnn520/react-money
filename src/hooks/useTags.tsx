@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
-import {createId} from './lib/createId';
-import {useUpdate} from './hooks/useUpdate';
-import {create} from 'domain';
+import {createId} from '../lib/createId';
+import {useUpdate} from './useUpdate';
+
 const useTags= ()=>{
     const [tags,setTags] = useState<{id:number,name:string}[]>([])
     const findTag = (id:number)=>tags.filter(tag=>tag.id===id)[0]
@@ -34,10 +34,10 @@ const useTags= ()=>{
        let localTags =  JSON.parse(window.localStorage.getItem('tags')||'[]')
         if(localTags.length===0){
             localTags = [
-                {id:create(),name:'衣'},
-                {id:create(),name:'食'},
-                {id:create(),name:'住'},
-                {id:create(),name:'行'},
+                {id:createId(),name:'衣'},
+                {id:createId(),name:'食'},
+                {id:createId(),name:'住'},
+                {id:createId(),name:'行'},
             ]
         }
         setTags(localTags);
