@@ -26,7 +26,7 @@ align-items: center;
 `
 function Tags() {
     // eslint-disable-next-line
-   const {tags,setTags}= useTags()
+   const {tags,onAddTag}= useTags()
     return(
         <Layout>
             <TagList>
@@ -44,7 +44,7 @@ function Tags() {
               <Space/>
                 <Space/>
                 <Space/>
-                <Button>新增标签</Button>
+                <Button onClick={onAddTag}>新增标签</Button>
                 <Space/>
             </Center>
 

@@ -1,13 +1,9 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {createId} from './lib/createId';
-const defaultTags =[
-    {id:createId(),name:'衣'},
-    {id:createId(),name:'食'},
-    {id:createId(),name:'住'},
-    {id:createId(),name:'行'}
-]
+import {useUpdate} from './hooks/useUpdate';
+import {create} from 'domain';
 const useTags= ()=>{
-    const [tags,setTags] = useState<{id:number,name:string}[]>(defaultTags)
+    const [tags,setTags] = useState<{id:number,name:string}[]>([])
     const findTag = (id:number)=>tags.filter(tag=>tag.id===id)[0]
     const findTagIndex = (id:number)=>{
         let result = -1;
@@ -33,6 +29,22 @@ const useTags= ()=>{
     //     setTags(tagsClone)
     // }
     //优化
+
+    useEffect(()=>{
+       let localTags =  JSON.parse(window.localStorage.getItem('tags')||'[]')
+        if(localTags.length===0){
+            localTags = [
+                {id:create(),name:'衣'},
+                {id:create(),name:'食'},
+                {id:create(),name:'住'},
+                {id:create(),name:'行'},
+            ]
+        }
+        setTags(localTags);
+    },[])
+    useUpdate(()=>{
+        window.localStorage.setItem('tags',JSON.stringify(tags))//不包含第一次更新
+    },[tags])
     const updateTag = (id:number,{name}:{name:string})=> {
         setTags(tags.map(tag=>{
             return tag.id === id? {id,name} : tag;
@@ -41,13 +53,20 @@ const useTags= ()=>{
     const deleteTag = (id:number)=>{
         setTags(tags.filter(tag=>tag.id!==id))//创建新的数组
     }
+    const onAddTag = ()=>{
+        const tagName = window.prompt('输入您要添加的标签');
+        if(tagName!==null && tagName!==''){
+            setTags([...tags,{id: createId(),name:tagName}])
+        }
+    }
     return{
         tags,
         setTags,
         findTag,
         updateTag,
         findTagIndex,
-        deleteTag
+        deleteTag,
+        onAddTag
     }
 }
 export {useTags}
