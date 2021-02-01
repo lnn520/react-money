@@ -10,8 +10,10 @@ const MyLayout = styled(Layout)`
 display: flex;
 flex-direction: column;
 `
+const CategoryWrapper = styled.div`
+background: #c4c4c4;
+`
 const defaultFormDate ={
-
     tagIds: [] as number[],
         note:'',
     category:'-'  as Category,
@@ -27,8 +29,8 @@ function Money() {
             ...obj
         });
     };
-    const {records,addRecords} =useRecords()
-    console.log(records)
+    const {addRecords} =useRecords()
+
     const submit = ()=>{
         if(addRecords(selected)){
             alert('保存了')
@@ -46,9 +48,11 @@ function Money() {
 
             <NoteSection value={selected.note}
                          onChange={(note)=>onChange({note})}/>
+            <CategoryWrapper>
+                <CategorySelection value={selected.category}
+                                   onChange={(category)=>onChange({category})}/>
+            </CategoryWrapper>
 
-            <CategorySelection value={selected.category}
-                               onChange={(category)=>onChange({category})}/>
 
             <NumberPadSection value={selected.amount}
                               onChange={(amount)=>onChange({amount})}
