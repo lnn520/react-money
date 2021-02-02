@@ -26,7 +26,7 @@ color: #999;
 `
 const Header =styled.h3`
 font-size: 18px;
-line-height: 20px;
+line-height: 20px; 
 padding: 10px 16px;
 `
 type RecordItem ={
@@ -42,13 +42,14 @@ function Statistics() {
     const {getName} = useTags();
     const selectedRecords = records.filter(r=>r.category===category)//选中的category
     const hash:{ [K:string]:RecordItem[] } ={}
-    selectedRecords.map(r=>{
+    selectedRecords.forEach(r=>{
         const key =dayjs(r.createdAt).format('YYYY-MM-DD');
         if(!(key in hash)){
             hash[key] = [];
         }
         hash[key].push(r)
     });
+
     const array = Object.entries(hash).sort((a,b)=>{
 
         if(a[0]===b[0]) return 0;

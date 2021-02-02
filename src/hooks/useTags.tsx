@@ -44,7 +44,7 @@ const useTags= ()=>{
     },[])
     useUpdate(()=>{
         window.localStorage.setItem('tags',JSON.stringify(tags))//不包含第一次更新
-    },[tags])
+    },tags)
     const updateTag = (id:number,{name}:{name:string})=> {
         setTags(tags.map(tag=>{
             return tag.id === id? {id,name} : tag;

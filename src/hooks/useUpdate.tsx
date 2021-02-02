@@ -10,6 +10,6 @@ const useUpdate = (fn:()=>void,deps:any[])=>{
             fn();
         }
 
-    },deps)//每次产生一个新的tags才会触发
+    },[fn,deps])//每次产生一个新的tags才会触发
 }
 export {useUpdate}
