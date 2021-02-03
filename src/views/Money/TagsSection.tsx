@@ -6,7 +6,7 @@ import {useTags} from 'hooks/useTags';
 const Wrapper = styled.section`
 padding: 12px 16px;
 flex-grow: 1;
-background: #ffffff;
+background:#29daea;
 display: flex;
 flex-direction: column;
 justify-content: flex-end;
@@ -14,7 +14,7 @@ align-items: flex-start;
 >ol{
 margin: 0 -12px;
 >li{
-  background: #d9d9d9;
+  background: white;
   border-radius: 18px;
   display: inline-block;
   padding: 4px 18px;

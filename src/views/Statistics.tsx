@@ -8,16 +8,18 @@ import dayjs from 'dayjs';
 
 
 const CategoryWrapper = styled.div`
-background: #fff;
+background:#dfdfef;
 
 `;
 const Item = styled.div`
 display: flex;
 justify-content: space-between;
-background: white;
+background: #fff;
+border-radius: 20px;
 font-size: 18px;
 line-height: 20px;
 padding: 10px 16px;
+margin-top: 5px;
 >.note{
 margin-right: auto;
 margin-left: 16px;

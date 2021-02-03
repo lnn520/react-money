@@ -6,13 +6,15 @@ import CategorySelection from './Money/CategorySelection';
 import NumberPadSection from './Money/NumberPadSection';
 import NoteSection from './Money/NoteSection';
 import {useRecords} from '../hooks/useRecords';
+import {Header} from '../components/Header';
 const MyLayout = styled(Layout)`
 display: flex;
 flex-direction: column;
 `
 const CategoryWrapper = styled.div`
-background: #c4c4c4;
+background: #29daea;
 `
+
 const defaultFormDate ={
     tagIds: [] as number[],
         note:'',
@@ -41,12 +43,13 @@ function Money() {
 
     return(
         <MyLayout className="xxx" scrollTop={9999}>
-
+              <Header> 记录自己的一天</Header>
             <TagsSection value = {selected.tagIds}
                          onChange={ (tagIds)=>onChange({tagIds})}/>
 
             <NoteSection value={selected.note}
                          onChange={(note)=>onChange({note})}/>
+
             <CategoryWrapper>
                 <CategorySelection value={selected.category}
                                    onChange={(category)=>onChange({category})}/>

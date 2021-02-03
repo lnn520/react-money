@@ -16,13 +16,17 @@ const Topbar = styled.header `
   justify-content: space-between;
   line-height: 20px;
   padding: 14px;
-  background: white;
+  background: #dfdfef;
   align-items: center;
+ 
 `
 const InputWrapper = styled.div`
 background: white;
+border-radius: 20px;
 margin-top: 8px;
+padding: 0 20px;
 `
+
 const Tag: React.FC =()=>{
     const {findTag,updateTag,deleteTag} = useTags()
       let { id}= useParams<Params>()//把id命名为idString
@@ -55,14 +59,20 @@ if(tag){
                 <Space/>
                 <Button onClick={()=>{deleteTag(tag.id)}}>删除标签</Button>
             </Center>
+
         </Layout>
 
     )
 }else {
     return (
-        <div>
-            不存在
-        </div>
+        <Layout>
+            <Center>
+
+                标签已删除
+            </Center>
+
+        </Layout>
+
     )
 }
 }

@@ -10,30 +10,37 @@ import {Space} from '../components/Space';
 
 const TagList = styled.ol`
 font-size: 16px;
-background: white;
+
 >li{
-border-bottom: 2px dotted #d5d5d5;
 line-height: 20px;
-margin-left: 16px;
-margin-right: 16px;
+margin-top: 10px;
 >a{
-padding: 12px 0;
+padding: 12px 20px;
 display: flex;
 justify-content: space-between;
 align-items: center;
+background: white;
+border-radius: 20px;
 }
 }
+`
+const Header = styled.div`
+font-size: 20px;
+text-align: center;
+padding: 10px 0;
+background: #dfdfef;
 `
 function Tags() {
     // eslint-disable-next-line
    const {tags,onAddTag}= useTags()
     return(
         <Layout>
+            <Header> 所有标签</Header>
             <TagList>
                 {tags.map(tag=>
                 <li key={tag.id}>
                     <Link to={"/tags/"+tag.id}>
-                        <span className='oneLine'> {tag.id}{tag.name}</span>
+                        <span className='oneLine'> {tag.name}</span>
                         <Icon name="right"/>
                     </Link>
 

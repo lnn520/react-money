@@ -7,5 +7,8 @@ padding: 8px 12px;
 background:#767676;
 border-radius: 4px;
 color: white;
+&:hover{
+background: red;
+}
 `
 export {Button}

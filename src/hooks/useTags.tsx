@@ -52,6 +52,7 @@ const useTags= ()=>{
     }
     const deleteTag = (id:number)=>{
         setTags(tags.filter(tag=>tag.id!==id))//创建新的数组
+
     }
     const onAddTag = ()=>{
         const tagName = window.prompt('输入您要添加的标签');
