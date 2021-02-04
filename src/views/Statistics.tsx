@@ -5,12 +5,17 @@ import styled from 'styled-components';
 import {useRecords} from '../hooks/useRecords';
 import {useTags} from '../hooks/useTags';
 import dayjs from 'dayjs';
+import {Link} from 'react-router-dom';
 
 
 const CategoryWrapper = styled.div`
 background:#dfdfef;
-
 `;
+const Name = styled.div`
+border-radius: 10px;
+padding: 5px 10px;
+background: #29daea;
+`
 const Item = styled.div`
 display: flex;
 justify-content: space-between;
@@ -24,6 +29,9 @@ margin-top: 5px;
 margin-right: auto;
 margin-left: 16px;
 color: #999;
+}
+>.amount{
+margin-top: 5px;
 }
 `
 const Header =styled.h3`
@@ -71,9 +79,12 @@ function Statistics() {
                 <div>
                     {records.map(r=>{
                         return <Item key={r.createdAt}>
-                            <div className="tags">
-                                {r.tagIds.map(t=><span key={r.tagIds[0]} > {getName(t)}</span>)}
-                            </div>
+                            <Link to={"/Statistics/"+r.tagIds[0]} className="tags">
+                                <Name>
+                                    {r.tagIds.map(t=><span key={r.tagIds[0]} > {getName(t)}</span>)}
+                                </Name>
+
+                            </Link>
 
                             { r.note&&<div className="note">
                                 {r.note}

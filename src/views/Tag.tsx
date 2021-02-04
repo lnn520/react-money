@@ -68,7 +68,7 @@ if(tag){
         <Layout>
             <Center>
 
-                标签已删除
+                标签已删除，请点击下边导航栏返回
             </Center>
 
         </Layout>

@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {useUpdate} from './useUpdate';
-// type newRecordItem =Omit<RecordItem,'createdAt'>忽略RecordItem中的createdAt
+
  type RecordItem ={
    tagIds: number[];
    note:string;
@@ -14,6 +14,7 @@ type newRecordItem ={
     category:'+'|'-';
     amount: number;
 }
+
 const useRecords = ()=>{
     const [records,setRecords] = useState<RecordItem[]>([])
     useEffect(()=>{
@@ -33,9 +34,18 @@ const useRecords = ()=>{
         return true
     };
     useUpdate(()=>{
-        window.localStorage.setItem('records',JSON.stringify(records))
-    },records)
 
-    return {records,addRecords}
+        window.localStorage.setItem('records',JSON.stringify(records))
+    },[records])
+    const deleteRecords= (createdAt:string)=>{
+
+        if(records.map(t=>t.createdAt===createdAt)){
+          const newRecords =  records.filter(t=>t.createdAt!==createdAt)
+            setRecords(newRecords);
+        }
+    }
+    const findRecords = (id:number)=>records.filter(tag=>tag.tagIds[0]===id)[0]
+    return {records,addRecords,deleteRecords,findRecords}
+
 }
 export {useRecords}
